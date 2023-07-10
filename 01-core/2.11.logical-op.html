@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let a = 0;
+      // let b = "abc";
+
+      //  ||: 첫번째 truthy를 반환
+      // a : falsy, b: truthy
+      // c <- b (c = b)
+      // const c = a || b;
+      // alert(c);
+
+      // 달란 평가(short-circult evalution)
+      // b: truthy, a는 평가하지 않음.
+      // const d = a || b;
+      // alert(c);
+
+      // "" || alert("앞에 것이 falsy");
+      // getName() || alert("이름값이 없습니다");
+
+      // function getName() {
+      //   return "";
+      // }
+
+      // &&: 첫번째 falsy를 반환
+      // const e = a && b;
+      // alert(e);
+      // b: truhty, null: falsy
+      // const f = b && null && a;
+      // alert(f);
+
+      // boolean 값으로 변환
+      // !값: 반대 boolean
+      //  !!값: 식 평가와 동일한 boolean
+      // alert(!a);
+      // alert(!!a);
+
+      // 형변환 할떄
+      // 문자열변환: "" + 값
+      // 숫자변환: +값
+      // 불린변환: !!값
+
+      // const res = alert(true);
+      // alert(res);
+
+      // const res = alert(true);
+      // alert(res);
+
+      let Begin = prompt("Who's there?");
+
+      // if (Begin == "Admin") {
+      //   let password = prompt("Password?");
+      //   if (password == "TheMaster") {
+      //     alert("Welcome");
+      //   } else if (password == null || password == "") {
+      //     alert("Canceled");
+      //   } else {
+      //     alert("Wrong password");
+      //   }
+      // } else if (Begin == null || Begin == "") {
+      //   alert("Canceled");
+      // } else {
+      //   alert("I don't know you");
+      // }
+
+      const r = 0 || "" || null || undefined || "abc" || "def";
+      alert(r);
+      // null 또는 undifined 아닌 값 찾기
+      // 존재하는 값을 찾는다..
+      const r2 = 0 ?? "" ?? null ?? undefined ?? "abc" ?? "def";
+      alert(r2);
+      const a1 = 0;
+      const a2 = "";
+      let a3;
+
+      const r3 = a3 ?? a1 ?? a2;
+    </script>
+  </body>
+</html>
