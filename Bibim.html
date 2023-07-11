@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var seemSize = 1,
+        zoomSize = 1,
+        browser = navigator.userAgent.toLowerCase();
+      function zoomIn() {
+        seemSize += 0.05;
+        zoomSize *= 1.2;
+        zoom();
+      }
+      function zoomOut() {
+        seemSize -= 0.05;
+        zoomSize /= 1.2;
+        zoom();
+      }
+      function zoom() {
+        if (browser.indexOf("firefox") != -1) {
+          //브라우저가 firefox일때
+          document.body.style.webkitTransform = "scale(" + seemSize + ")";
+          document.body.style.webkitTransformOrigin = "50% 0 0"; //늘리고 줄였을때위치,
+          document.body.style.msTransform = "scale(" + seemSize + ")";
+          document.body.style.msTransformOrigin = "50% 0 0";
+          document.body.style.transform = "scale(" + seemSize + ")";
+          document.body.style.transformOrigin = "50% 0 0";
+          document.body.style.OTransform = "scale(" + seemSize + ")";
+          document.body.style.OTransformOrigin = "50% 0 0";
+        } else {
+          document.body.style.zoom = zoomSize;
+        }
+      }
+    </script>
+    <style>
+      h1 {
+        margin: 70px auto 30px;
+        text-align: center;
+      }
+      .area-zoom-btn {
+        display: block;
+        margin: 6px auto;
+        text-align: center;
+      }
+      .area-zoom-btn .zoom-btn {
+        display: inline-block;
+      }
+      .area-zoom-btn .zoom-btn i {
+        font-size: 0.8rem;
+        letter-spacing: -1px;
+        vertical-align: middle;
+        height: 25px;
+        border-top: 1px solid #777777;
+        float: left;
+        border-bottom: 1px solid #777777;
+        padding: 0 9px;
+        line-height: 22px;
+      }
+      .area-zoom-btn .zoom-btn .zoom {
+        float: left;
+        width: 22px;
+        height: 25px;
+        border: 1px solid #777777;
+        text-indent: -9999px;
+        background-color: #ffffff;
+        background-image: url("https://jinnny.github.io/blog_source/img_comn.png");
+        background-repeat: no-repeat;
+        background-position: 5px 6px;
+      }
+      .area-zoom-btn .zoom-btn .zoom.zoomout {
+        background-position: 5px -53px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: red">하기 싫다</h1>
+    <div class="area-zoom-btn">
+      <div class="zoom-btn">
+        <button class="zoom" onclick="javascript:zoomIn();">확대</button>
+        <i>글자크기</i>
+        <button class="zoom zoomout" onclick="javascript:zoomOut();">
+          축소
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
