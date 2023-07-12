@@ -15,10 +15,21 @@
       // error
       // user(init됨).address(undefined)
 
-      user.address = {
-        street: "신촌로",
-      };
-      console.log(user.address.street);
+      // user.address = {
+      //   street: "신촌로",
+      // };
+
+      // 사용자 정보인데
+      // 어떤가람은 주소 정보가 있고, 어떤가람은 없음
+
+      // console.log(user.address.street);
+
+      // user.address -> 첫번째 undefined를 반환
+      // 객체명.속성명?.속성명?.....
+      // 첫번째 undefine인 속성을 접근
+      console.log(user.address?.street);
+
+      // 이전줄에서 에러가 발생하면 다음줄은 실행안됌
     </script>
   </body>
 </html>
