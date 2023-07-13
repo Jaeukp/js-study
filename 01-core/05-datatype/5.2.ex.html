@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function ucFirst(str) {
+      //   if (!str) return str;
+      //   return str[0].toUpperCase() + str.slice(1);
+      // }
+
+      // alert(ucFirst("john"));
+
+      // function checkSpam(str) {
+      //   let lowerStr = str.toLowerCase();
+
+      //   return lowerStr.includes("viagra") || lowerStr.includes("xxx");
+      // }
+
+      // alert(checkSpam("but ViAgRA now"));
+      // alert(checkSpam("free xxxxx"));
+      // alert(checkSpam("innocent rabbit"));
+
+      function truncate(str, maxlength) {
+        if (str.length <= maxlength) {
+          return str;
+        }
+        return str.slice(0, maxlength - 1) + "...";
+      }
+
+      alert(truncate("What I'd like to tell in this topic is:", -5));
+      alert(truncate("Hi everyone!", 20));
+    </script>
+  </body>
+</html>
