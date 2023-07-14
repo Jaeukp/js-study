@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const fruits = ["banana", "apple", "orange", "pineapple", "kiwi"];
+      let findFruits = fruits.splice(1, 1);
+      console.log(findFruits);
+
+      const numbers = [1, 4, 5, 7, 2, 9, 3];
+
+      // const result = numbers.reduce((acc, num) => {
+      //   if (num >= 5) {
+      //     acc.push(num);
+      //   }
+      //   return acc;
+      // }, []);
+
+      // console.log(result);
+
+      const result = numbers.filter((num) => num >= 5);
+
+      console.log(result);
+
+      // let findNumbers = numbers.splice(2);
+      // console.log(findNumbers);
+    </script>
+  </body>
+</html>
