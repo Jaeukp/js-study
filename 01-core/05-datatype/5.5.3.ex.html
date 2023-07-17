@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문제 1
+      let people = [
+        { name: "John", age: 23 },
+        { name: "Adam", age: 30 },
+        { name: "Zoe", age: 28 },
+        { name: "Emma", age: 20 },
+      ];
+      // people.sort((a, b) => a.name.localeCompare(b.name));
+      // console.log(people);
+
+      // let person = people.find((item) => item.name == "John");
+      // console.log(person);
+
+      // let result = people.reduce((sum, current) => sum + current.age, 0);
+      // console.log("나이의 합은? ", result);
+
+      // let olderpeople = people.filter((person) => person.age >= 25);
+      // let names = olderpeople.map((person) => person.name);
+      // console.log(names);
+
+      // let totalPoeple = people.map((person) => person.name);
+      // let names = totalPoeple.join(", ");
+      // console.log(names);
+
+      // let maxAgePerson = people.sort((a, b) => b.age - a.age)[0];
+      // console.log(maxAgePerson);
+
+      // let maxAgePerson = people.reduce((maxPerson, person) => {
+      //   if (person.age > maxPerson.age) {
+      //     return person;
+      //   } else {
+      //     return maxPerson;
+      //   }
+      // });
+      // console.log(maxAgePerson.name);
+
+      // let sentence = "Hello world";
+      // let words = sentence.split(" ");
+      // let capitalizedSentence = words
+      //   .map((word) => word.toUpperCase())
+      //   .join(" ");
+
+      // console.log(capitalizedSentence);
+
+      // console.log(people.map((person) => `${person.name}: ${person.age}`));
+
+      // let personStrings = people.reduce((result, person) => {
+      //   result.push(`${person.name}: ${person.age}`);
+      //   return result;
+      // }, []);
+      // console.log(personStrings);
+
+      // let totalAge = people.reduce((sum, person) => sum + person.age, 0);
+      // let averageAge = totalAge / people.length;
+
+      // console.log("Average Age:", averageAge);
+
+      console.log(people.reduce((total, person) => total + person.age, 0));
+    </script>
+  </body>
+</html>
