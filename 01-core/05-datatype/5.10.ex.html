@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let student = {
+      //   name: "John",
+      //   age: 20,
+      //   major: "Computer Science",
+      // };
+
+      // let { name, age, major } = student;
+
+      // let grades = [90, 85, 92];
+      // let { math, science, english } = grades;
+
+      // let student = {
+      //   name: "John",
+      //   age: 20,
+      //   major: "Computer Science",
+      //   grades: {
+      //     math: 90,
+      //     science: 95,
+      //     english: 100,
+      //   },
+      // };
+      // let {
+      //   name,
+      //   age,
+      //   major,
+      //   grades: {
+      //     math: mathGrade,
+      //     science: scienceGrade,
+      //     english: englishGrade,
+      //   },
+      // } = student;
+
+      let data = ["John", 20, "Computer Science", [90, 85, 100]];
+      let [name, age, major, [math, science, english]] = data;
+    </script>
+  </body>
+</html>

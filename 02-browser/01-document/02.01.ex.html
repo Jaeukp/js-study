@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- form input:first-of-type -->
+    <form name="search">
+      <label
+        >Search the site:
+        <input type="text" name="search" />
+      </label>
+      <input type="submit" value="Search!" />
+    </form>
+
+    <hr />
+
+    <form name="search-person">
+      Search the visitors:
+      <table id="age-table">
+        <tbody>
+          <tr>
+            <td>Age:</td>
+            <td id="age-list">
+              <label>
+                <input type="radio" name="age" value="young" />less than
+                18</label
+              >
+              <label>
+                <input type="radio" name="age" value="mature" />18-50</label
+              >
+              <label>
+                <input type="radio" name="age" value="senior" />more than
+                50</label
+              >
+            </td>
+          </tr>
+
+          <tr>
+            <td>Additionally:</td>
+            <td>
+              <input type="text" name="info[0]" />
+              <input type="text" name="info[1]" />
+              <input type="text" name="info[2]" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="submit" value="Search!" />
+    </form>
+    <script
+      src="C:\Users\tjoeun\.git\js-study\js-study\02-browser\01-document\02.01.ex.js"
+    >
+      const elem = document.getElementById("age-table");
+      console.log(elem);
+
+      const elements = document.querySelectorAll("#age-table label");
+      console.log(elements);
+
+      const div = document.querySelector("#age-table td:first-child");
+      console.log(div);
+
+      let form = document.getElementsByName("search")[0];
+      document.querySelector('form[name="search"]');
+
+      form.getElementsByTagName("input")[0];
+      form.querySelector("input");
+
+      let inputs = form.querySelectorAll("input");
+      inputs[inputs.length - 1];
+    </script>
+  </body>
+</html>
