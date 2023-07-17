@@ -64,7 +64,16 @@
 
       // console.log("Average Age:", averageAge);
 
-      console.log(people.reduce((total, person) => total + person.age, 0));
+      // console.log(people.reduce((total, person) => total + person.age, 0));
+
+      // console.log(
+      //   people.reduce((total, person) => total + person.age, 0) / people.length
+      // );
+
+      // let hasPersonWithA = people.some((person) => person.name.includes("a"));
+      // console.log("Has person with 'a' :", hasPersonWithA);
+
+      let findAPerson = people.some((person) => person.name.includes("a"));
     </script>
   </body>
 </html>
