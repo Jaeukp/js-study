@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 10000px;
+      }
+
+      .banner {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .ad-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .ad {
+        background-color: #f0f0f0;
+        padding: 20px;
+        width: 25%;
+      }
+
+      .node-description {
+        background-color: #fff;
+        padding: 20px;
+        width: 50%;
+      }
+
+      .sidebar {
+        background-color: #f0f0f0;
+        padding: 20px;
+        width: 15%;
+      }
+
+      .scrolling-bar {
+        background-color: #f0f0f0;
+        padding: 10px;
+        position: sticky;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scrolling-bar">
+      <h3>상단 작은칸</h3>
+      <p>스크롤하면 항상 상단에 고정됩니다.</p>
+    </div>
+
+    <div class="banner">
+      <h1>사이트 상단 배너칸</h1>
+    </div>
+
+    <div class="ad-container">
+      <div class="ad">
+        <h2>광고칸</h2>
+        <p>광고 내용이 여기에 들어갑니다.</p>
+      </div>
+
+      <div class="node-description">
+        <h2>JavaScript 노드 프로퍼티</h2>
+        <p>
+          JavaScript에서 DOM 요소와 관련된 정보를 액세스하기 위해 노드
+          프로퍼티를 사용할 수 있습니다.
+        </p>
+        <!-- 노드 프로퍼티 설명 내용 -->
+      </div>
+
+      <div class="sidebar">
+        <h3>작은칸</h3>
+        <p>여기에 작은칸 내용이 들어갑니다.</p>
+      </div>
+    </div>
+  </body>
+</html>

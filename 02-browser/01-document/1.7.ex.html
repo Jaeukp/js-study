@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <ol id="elem">
+      <li>Hello</li>
+      <li>World</li>
+    </ol> -->
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>Smith</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Pete</td>
+          <td>Brown</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Ann</td>
+          <td>Lee</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="1.7.ex.js"></script>
+
+    <div id="container"></div>
+    <script>
+      // function clear(elem) {
+      //   while (elem.firstChild) {
+      //     elem.firstChild.remove();
+      //   }
+      // }
+      // clear(elem);
+      // elem.innerHTML = "";
+      // }
+
+      // var elem = document.getElementById("elem");
+      // clear(elem);
+
+      // clear(elem); // elem 내부 리스트를 삭제합니다.
+
+      // let ul = document.createElement("ul");
+      // document.body.append(ul);
+
+      // while (true) {
+      //   let data = prompt("아이템리스트를 입력하세요");
+
+      //   if (!data) {
+      //     break;
+      //   }
+      //   let li = document.createElement("li");
+      //   li.textContent = data;
+      //   ul.append(li);
+      // }
+
+      //   let data = {
+      //   "Fish": {
+      //     "trout": {},
+      //     "salmon": {}
+      //   },
+
+      //   "Tree": {
+      //     "Huge": {
+      //       "sequoia": {},
+      //       "oak": {}
+      //     },
+      //     "Flowering": {
+      //       "apple tree": {},
+      //       "magnolia": {}
+      //     }
+      //   }
+      // };
+
+      // function createTree(container, obj) {
+      //   container.innerHTML = createTreeText(obj);
+      // }
+
+      // function createTreeText(obj) { // 독립 실행형 재귀함수
+      //   let li = '';
+      //   let ul;
+      //   for (let key in obj) {
+      //     li += '<li>' + key + createTreeText(obj[key]) + '</li>';
+      //   }
+      //   if (li) {
+      //     ul = '<ul>' + li + '</ul>'
+      //   }
+      //   return ul || '';
+      // }
+
+      // createTree(container, data);
+    </script>
+  </body>
+</html>
