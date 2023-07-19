@@ -1,3 +1,3 @@
 {
-  "printwidth: 40px"
+  "printwidth: 50"
 }
