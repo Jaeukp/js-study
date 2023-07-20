@@ -57,14 +57,22 @@
 //     );
 //   }
 // };
-document.getElementById('contents').addEventListener('click', function(event) {
-  // 클릭한 요소가 <a> 태그인지 확인합니다.
-  const link = event.target.closest('a');
-  if (!link) return;
+// document.getElementById('contents').addEventListener('click', function(event) {
+//   // 클릭한 요소가 <a> 태그인지 확인합니다.
+//   const link = event.target.closest('a');
+//   if (!link) return;
 
-  // 사용자에게 확인을 받는 경고창을 띄웁니다.
-  const confirmMessage = "링크를 클릭하여 사이트를 떠나시겠습니까?";
-  if (!window.confirm(confirmMessage)) {
-    event.preventDefault(); // 링크 이동을 취소합니다.
-  }
+//   // 사용자에게 확인을 받는 경고창을 띄웁니다.
+//   const confirmMessage = "링크를 클릭하여 사이트를 떠나시겠습니까?";
+//   if (!window.confirm(confirmMessage)) {
+//     event.preventDefault(); // 링크 이동을 취소합니다.
+//   }
+// });
+arrowTop.onclick = function() {
+  window.scrollTo(pageXOffset, 0);
+  // after scrollTo, there will be a "scroll" event, so the arrow will hide automatically
+};
+
+window.addEventListener('scroll', function() {
+  arrowTop.hidden = (pageYOffset < document.documentElement.clientHeight);
 });

@@ -16,6 +16,4 @@ input.addEventListener("keydown", (e) => {
   ) {
     alert("사이트를 빠져나갈수 있어서 금지")
   }
-}
-
-)
+})

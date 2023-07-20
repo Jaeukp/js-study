@@ -17,13 +17,21 @@ console.log(container);
 // 버튼을 클릭하면 입력창의 값을 가져온 후
 // 항목을 만들고 목록에 추가
 
-const addItem
+
 
 // 버튼을 클릭하면 작동할 함수를 등록
 
 container
 .querySelector("button")
 .addEventListener("click", addItem );
+
+container
+  .querySelector("input")
+  .addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      addItem();
+    }
+  });
 
 function addItem() {
   const input = container.querySelector("input")
