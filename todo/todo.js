@@ -2,10 +2,11 @@
 // 입력창에 메모를 입력하고
 // 추가버튼을 클릭하면 목록의 첫번째에 추가
 //  + 입력창에 값이 초기화
+//  + 
 
 // 2번째 use-case
 // 목록에서 항목을 클릭하면
-// 클릭한 항목이 삭제(화면에서 안보임)
+// 클릭한 항목이 삭제
 
 const container = document.querySelector(
   "#todo-container"
@@ -16,16 +17,31 @@ console.log(container);
 // 버튼을 클릭하면 입력창의 값을 가져온 후
 // 항목을 만들고 목록에 추가
 
+const addItem
+
+// 버튼을 클릭하면 작동할 함수를 등록
+
 container
 .querySelector("button")
-.addEventListener("click", () => {
-  const value = 
-    container.querySelector("input").value;
-    console.log(value);
+.addEventListener("click", addItem );
 
-  const item = document.createElement("li");
-  item.textContent = value;
-  console.log(item);
-
-  container.querySelector("ul").prepend(item);
-});
+function addItem() {
+  const input = container.querySelector("input")
+    // 입력값을 가져옴
+    const value = input.value;
+      console.log(value);
+  
+    // 아이템(li)을 생성하고, 입력값을 컨텐트로 넣음
+    const item = document.createElement("li");
+    item.textContent = value;
+    console.log(item);
+  
+    // 2번째 use-case 구현
+    // 항목을 클릭하면 삭제하는 이벤트 핸들러 추가
+  
+    // 아이템을 목록에 추가
+    container.querySelector("ul").prepend(item);
+  
+    // +입력값 초기화
+    input.value = "";
+  }
