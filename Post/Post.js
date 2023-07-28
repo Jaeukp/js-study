@@ -1,71 +1,64 @@
-function createRow(createdname, title, content) {
-  // 1. 요소 생성
-  const tr = document.createElement("tr");
-
-  // 2. 요소의 속성 설정
-  DataTransfer.
-  // tr.dataset.createdname = createdname;
-  // tr.innerHTML = `
-  // <div >
-  // <td>${createdname}</td>
-  // <hr>
-  // <td>${title}</td>
-  // <hr>
-  // <td>${content}</td>
-  // </div>`;
-  // return tr;
+function cardTemplate(item) {
+  const template = /*html*/ `
+  <div style="width:300px; margin-bottom:3rem;" data-no="${
+    item.no
+  }">
+    <em>${item.creatorName}</em>
+    <hr>
+    <h3>${item.title}</h3>
+    <p>${item.content}</p>
+    <hr>
+    <small>${new Date(
+      // item.createdTime
+    ).toLocaleString()}</small>
+    <img width="auto" height="100" src="${item.image}">
+  </div>
+`;
+  return template;
 }
 
-// 데이터 조회 및 목록 생성
 (async () => {
-  const response = await fetch(
-    "http://localhost:8080/posts"
-  );
-  // 결과가 배열
+  const url = "http://localhost:8080/posts";
+
+  // 1. fetch, 서버에서 데이터 가져오기
+  const response = await fetch(url);
   const result = await response.json();
   console.log(result);
 
-  const tbody = document.querySelector("tbody");
+  // 배열 메서드를 사용하기 위해서...
+  const data = Array.from(result);
+  console.log(data);
 
-  // 배열 반복을 해서 tr만든다음에 tbody 가장 마지막 자식에 추가
-  for (let item of result) {
-    tbody.append(
-      createRow(item.createdname, item.title, item.content, item.createdTime)
-    );
-  }
+  // 2.-- 데이터배열 반복문으로 html문자열 만들고,
+  // 컨테이너에 추가
+  data
+    // 데이터를 다시 순정렬을 한다음에
+    .sort((a, b) => a.no - b.no)
+    // 반복문으로 form뒤에 div를 추가함
+    .forEach((item) => {
+      document.forms[0].insertAdjacentHTML(
+        "afterend",
+        cardTemplate(item)
+      );
+    });
 })();
 
-// 추가폼 처리
+// 추가 기능
 (() => {
   const form = document.forms[0];
-  const inputs = form.querySelectorAll("input");
+  const post = form.querySelector("#new");
 
-  const createdname = inputs[0];
-  const title = inputs[1];
-  const content = inputs[2];
+  const image = form.querySelector("label");
+  const title = form.querySelector("#putthe");
+  const content = form.querySelector("textarea");
+  // const file = inputs[0];
 
-  const add = form.querySelector("button");
+  const reader = new FileReader();
 
-  add.addEventListener("click", async (e) => {
+  post.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    if (createdname.value === "") {
-      alert("이메일을 입력해주세요.");
-      return;
-    }
-
-    if (title.value === "") {
-      alert("이름을 입력해주세요.");
-      return;
-    }
-
-    if (content.value === "") {
-      alert("전화번호를 입력해주세요.");
-      return;
-    }
-
-    // 서버에 데이터를 전송
-    // fetch(url, options)
+    // 서버에 데이터 전송
     const response = await fetch(
       "http://localhost:8080/posts",
       {
@@ -76,9 +69,9 @@ function createRow(createdname, title, content) {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          createdname: createdname.value,
           title: title.value,
           content: content.value,
+          image,
         }),
       }
     );
@@ -87,21 +80,47 @@ function createRow(createdname, title, content) {
     const result = await response.json();
     console.log(result);
 
-    // 화면에 요소를 추가하는 것은 데이처리가 정상적으로 된 다음에
-
-    // --- 3. 어딘가(부모, 다른요소)에 추가한다(append, prepend);
-    const tbody = document.querySelector("tbody");
-    tbody.prepend(
-      createRow(
-        createdname.value,
-        title.value,
-        content.value
-      )
+    // UI 생성
+    document.forms[0].insertAdjacentHTML(
+      "afterend",
+      cardTemplate(result.data)
     );
+
     form.reset();
   });
+})();
 
-  console.log("추가폼 처리 코드");
+(() => {
+  const form = document.forms[1];
+
+  const no = form.querySelector("input");
+  const del = form.querySelector("button");
+
+  del.addEventListener("click", async (e) => {
+    e.preventDefault();
+    
+    // const deleteTitle = document.querySelector('input[placeholder="삭제할 논문 제목"]').value;
+    // 서버통신
+    await fetch(
+      `http://localhost:8080/posts/${no.value}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    const body = document.querySelector(
+      `div[data-no="${no.value}"]`
+    );
+
+    if (!body) {
+      alert("해당 제목의 논문이 없습니다.");
+      return;
+    }
+
+    body.remove();
+
+    form.reset();
+  });
 })();
 
 // 삭제폼 처리
