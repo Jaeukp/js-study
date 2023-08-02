@@ -7,7 +7,7 @@
   </head>
   <body>
     <form style="margin-bottom: 3rem">
-      <input id="putthe" type="text" placeholder="제목" /><br />
+      <input class="puttitle" type="text" placeholder="제목" /><br />
       <hr />
       <textarea
         cols="22"
@@ -16,16 +16,15 @@
         style="margin-top: 0.25rem"
       ></textarea>
       <br />
-      <label>이미지: <input type="file" accept="image/*" /></label>
+      <!-- <label>이미지: <input type="file" accept="image/*" /></label> -->
       <br />
-      <button id="new">게시</button>
+      <button class="new">게시</button>
       <hr />
     </form>
     <form>
-      <input id="deltext" type="text" placeholder="삭제할 논문 제목" />
-      <button id="del">삭제</button>
+      <input class="deltitle" type="text" placeholder="삭제할 논문 제목" />
+      <button class="del">삭제</button>
     </form>
-
     <script src="Post.js"></script>
   </body>
 </html>

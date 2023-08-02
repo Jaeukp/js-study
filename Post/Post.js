@@ -1,17 +1,21 @@
+
 function cardTemplate(item) {
   const template = /*html*/ `
-  <div style="width:300px; margin-bottom:3rem;" data-no="${
+  <div style="width:300px; margin-bottom:3rem;"data-no="${
     item.no
-  }">
+  } ">
     <em>${item.creatorName}</em>
     <hr>
     <h3>${item.title}</h3>
     <p>${item.content}</p>
     <hr>
-    <small>${new Date(
-      // item.createdTime
-    ).toLocaleString()}</small>
-    <img width="auto" height="100" src="${item.image}">
+
+    <div style="display:flex; justify-content:space-between;">
+      <small>${new Date(
+        item.createdTime
+      ).toLocaleString()}</small>
+      <button class="btn-remove">삭제</button>
+    </div>
   </div>
 `;
   return template;
@@ -46,10 +50,10 @@ function cardTemplate(item) {
 // 추가 기능
 (() => {
   const form = document.forms[0];
-  const post = form.querySelector("#new");
+  const post = form.querySelector(".new");
 
   const image = form.querySelector("label");
-  const title = form.querySelector("#putthe");
+  const title = form.querySelector(" .puttitle ");
   const content = form.querySelector("textarea");
   // const file = inputs[0];
 
@@ -57,6 +61,9 @@ function cardTemplate(item) {
 
   post.addEventListener("click", async (e) => {
     e.preventDefault();
+    console.log(title.value);
+    console.log(content.value);
+
 
     // 서버에 데이터 전송
     const response = await fetch(
@@ -66,7 +73,7 @@ function cardTemplate(item) {
         method: "POST",
         // 보낼 데이터 형식은 json
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           title: title.value,
@@ -75,10 +82,10 @@ function cardTemplate(item) {
         }),
       }
     );
-    console.log(response);
 
     const result = await response.json();
-    console.log(result);
+
+    
 
     // UI 생성
     document.forms[0].insertAdjacentHTML(
@@ -93,8 +100,8 @@ function cardTemplate(item) {
 (() => {
   const form = document.forms[1];
 
-  const no = form.querySelector("input");
-  const del = form.querySelector("button");
+  const no = form.querySelector(".deltitle");
+  const del = form.querySelector(".del");
 
   del.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -109,19 +116,49 @@ function cardTemplate(item) {
     );
 
     const body = document.querySelector(
-      `div[data-no="${no.value}"]`
+      `body[data-no="${no.value}"]`
     );
 
+    // if (!body) {
+    //   alert("해당 제목의 논문이 없습니다.");
+    //   return;
+    // }
+
+    // body.remove();
+
     if (!body) {
-      alert("해당 제목의 논문이 없습니다.");
+      alert("해당 본문 없음");
       return;
     }
-
+    
     body.remove();
-
     form.reset();
   });
 })();
+
+// 삭제 기능(이벤트 위임)
+(() => {
+  document.body.addEventListener("click", (e) => {
+    // alert(e.target.className);
+    // e.target: 실제 이벤트가 발생한요소
+    // 해당 클래스가 있는지 확인
+    if (
+      e.target.classList.contains("btn-remove")
+    ) {
+      // jsdoc type 힌트를 넣어줌
+      /** @type {HTMLButtonElement} */
+      const removeBtn = e.target;
+      removeBtn.parentElement.parentElement.remove();
+    }
+  });
+})();
+
+// // 수정처리(이벤트 위임)
+// (() => {
+//   document
+//   .querySelector("tbody")
+//   .addEventListener
+// })()
 
 // 삭제폼 처리
 // (() => {
