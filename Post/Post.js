@@ -1,9 +1,9 @@
 
 function cardTemplate(item) {
   const template = /*html*/ `
-  <div style="width:300px; margin-bottom:3rem;"data-no="${
-    item.no
-  } ">
+  <div style="width:300px; margin-bottom:3rem;" data-no="${
+    item.no}">
+    <p>${item.no}</p>  
     <em>${item.creatorName}</em>
     <hr>
     <h3>${item.title}</h3>
@@ -40,7 +40,7 @@ function cardTemplate(item) {
     .sort((a, b) => a.no - b.no)
     // 반복문으로 form뒤에 div를 추가함
     .forEach((item) => {
-      document.forms[0].insertAdjacentHTML(
+      document.forms[1].insertAdjacentHTML(
         "afterend",
         cardTemplate(item)
       );
@@ -100,8 +100,8 @@ function cardTemplate(item) {
 (() => {
   const form = document.forms[1];
 
-  const no = form.querySelector(".deltitle");
-  const del = form.querySelector(".del");
+  const no = form.querySelector("input");
+  const del = form.querySelector("button");
 
   del.addEventListener("click", async (e) => {
     e.preventDefault();
@@ -115,22 +115,16 @@ function cardTemplate(item) {
       }
     );
 
+    
     const body = document.querySelector(
-      `body[data-no="${no.value}"]`
+      `div[data-no="${no.value}"]`
     );
+    console.log(body);
 
     // if (!body) {
     //   alert("해당 제목의 논문이 없습니다.");
     //   return;
     // }
-
-    // body.remove();
-
-    if (!body) {
-      alert("해당 본문 없음");
-      return;
-    }
-    
     body.remove();
     form.reset();
   });
